@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هش کردن اعداد</title>
+    <script>
+        async function hashNumber() {
+            const number = prompt("لطفاً عددی که می‌خواهید هش کنید وارد کنید:");
+            if (number) {
+                const response = await fetch(`/hash?number=${number}`);
+                const result = await response.json();
+                if (response.ok) {
+                    const table = document.getElementById('resultTable');
+                    const newRow = table.insertRow();
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.innerText = result.number;
+                    cell2.innerText = result.hashed;
+                } else {
+                    alert(result.error);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>هش کردن اعداد</h1>
+    <button onclick="hashNumber()">عدد جدید</button>
+    <table border="1" id="resultTable">
+        <thead>
+            <tr>
+                <th>عدد ورودی</th>
+                <th>هش شده</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+</html>
+
+

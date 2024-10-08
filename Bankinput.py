@@ -31,7 +31,7 @@ class BankAccount:
             print("mblgh variz byd bishtr az sefr bshd!!")
 
 correct_owner1 = "eyvazkhani"
-correct_id1= 'A1204@'
+correct_id1= 'a1204@'
 correct_numberaccount2 = '60379972'
 balance1= 90000000
 balance2=0
@@ -60,8 +60,8 @@ ba2 = BankAccount(owner=owner2,_id='67890' , number_account=number_account2, bal
 try:
     amount_to_transfer = float(input("lotfan mblagh morede nazar ra vared knid:"))
     ba1.transfer(ba2, amount_to_transfer)
-except:
-    print('lotfan add sahih vared konid')
+except Exception as exe:
+    print(f'lotfan add sahih vared konid {exe}')
 
 print(f'{ba1.balance} mojudi hesab {owner1}')
 print(f'{ba2.balance} mojudi hesab {owner2}')
